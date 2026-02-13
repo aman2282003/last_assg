@@ -10,10 +10,17 @@ dotenv.config();
 
 const app = express();
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "User API is running successfully 🚀"
+  });
+});
+
+
 app.use(cors());
 app.use(express.json());
 
-mongoose
+mongoose    
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
